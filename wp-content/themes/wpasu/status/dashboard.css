@@ -1,0 +1,336 @@
+text {
+  font-family: Helvetica, Arial, Geneva, sans-serif;
+}
+
+text.link {
+  fill: #c00;
+  text-decoration: underline;
+}
+
+line.baseline{
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+line.meanWaitTimeLine {
+  display: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+line.present {
+  stroke: #000;
+  stroke-dasharray: 5,5;
+}
+
+line.maximum {
+  stroke: #888;
+}
+
+div {
+  display: block;
+}
+
+div.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+div.graphTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+#topBar {
+  position: absolute;
+  top: 3em;
+  bottom: 65%;
+  left: 0;
+  right: 0;
+}
+
+#key {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 66%;
+}
+
+#topDepartmentsForPast12Months {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 33%;
+  right: 33%;
+}
+
+#topDepartmentsForCurrentMonth {
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 66%
+}
+
+#keyForPast12months {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#topDepartmentsForCurrentMonthPlot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#topDepartmentsForPast12MonthsPlot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#usageHistory {
+  position: absolute;
+  bottom: 0;
+  top: 40%;
+  left: 0;
+  right: 0;
+}
+
+#usageHistoryPlot {
+  width: 100%;
+  height: 95%;
+  overflow: visible;
+}
+
+text.runningProcs {
+  font-size: 80%;
+}
+
+text.titleText {
+  text-anchor: middle;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+text.timeLabel {
+  text-anchor: end;
+  alignment-baseline: text-before-edge;
+  font-size: 80%;
+}
+
+text.queueTimeLabel {
+  text-anchor: middle;
+  alignment-baseline: text-before-edge;
+  font-size: 80%;
+}
+
+text.timeAxisLabel {
+  text-anchor: middle;
+  alignment-baseline: text-after-edge;
+  font-size: 90%;
+}
+
+text.jobsQueuedButNotScheduledLabel {
+  font-size: 80%;
+}
+
+text.groupKeyTitle {
+  font-weight: bold;
+}
+
+text.groupLabel {
+  font-size: 90%;
+}
+
+
+text.clusterStatusTitle {
+  font-weight: bold;
+}
+
+text.queueAreaTitle {
+  font-weight: bold;
+}
+
+text.pieTitle {
+  font-weight: bold;
+}
+
+text.queueAreaVerticalLabels {
+   font-size: 80%;
+}
+
+text.usageRateUnitsLabel {
+  font-size: 80%;
+}
+
+text.pieTotalUsageLabel {
+  font-size: 80%;
+}
+
+text.barTotalUsageLabel {
+  font-size: 80%;
+}
+
+rect.horizontalLabelsAndQueueArea {
+  stroke: black;
+  fill: none;
+}
+
+.nodeState_free {
+  /* nodes that are online and ready to run jobs */
+  fill: #fff;
+  stroke: #666;
+  stroke-width: 1px;
+}
+
+.nodeState_offline {
+  /* nodes that offline (I /think/ up and running but not accepting jobs) */
+  fill: #ccc;
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.nodeState_downoffline {
+  /* nodes that are offline and down */
+  fill: #000;
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.nodeState_job-exclusive {
+  /* nodes that are online and actively running jobs */
+  fill: none;
+  stroke: #333;
+  stroke-width: 1px;
+}
+
+rect {
+  stroke-width: 0.5px;
+  fill: #555;
+}
+
+.glowOverlay {
+  z-index: -1;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+  visibility: hidden;
+}
+
+path {
+  stroke: blue;
+  stroke-width: 1px;
+  fill: none;
+}
+
+.overlay {
+  fill: none;
+  stroke: none;
+}
+
+.Biodesign {
+  fill: #8FBC8F;
+  stroke: #8FBC8F;
+}
+
+.Chemistry {
+  fill: #F0E68C;
+  stroke: #F0E68C;
+}
+
+.Technology {
+  fill: #B8860B;
+  stroke: #B8860B;
+}
+
+.Economics {
+  fill: #98FB98;
+  stroke: #98FB98;
+}
+
+.Engineering {
+  fill: #778899;
+  stroke: #778899;
+}
+
+.HPCI {
+  fill: #B0E0E6;
+  stroke: #B0E0E6;
+}
+
+.LROC {
+  fill: #D2B48C;
+  stroke: #D2B48C;
+}
+
+.Physics {
+  fill: #D2691E;
+  stroke: #D2691E;
+}
+
+.Math {
+  fill: #7B68EE;
+  stroke: #7B68EE;
+
+}
+
+.SESE {
+  fill: #ffa631;
+  stroke: #ffa631;
+}
+
+.SOLS {
+  fill: #4658e5;
+  stroke: #4658e5;
+}
+
+.TGen {
+  fill: #6495ED;
+  stroke: #6495ED;
+}
+
+svg {
+  overflow: visible;
+}
+
+svg.pie {
+}
+
+svg.clusterStatus {
+}
+
+svg.chassisSVG {
+
+}
+
+svg.queueArea {
+
+}
+
+svg.queueAreaVerticalLabels {
+
+}
+
+svg.horizontalLabelsAndQueue {
+
+}
+
+svg.horizontalLabels {
+
+}
+
+svg.queuePlotArea {
+
+}
+
+rect.chassis {
+  fill: #fff;
+}

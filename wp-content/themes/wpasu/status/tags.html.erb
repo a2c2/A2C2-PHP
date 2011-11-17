@@ -1,0 +1,89 @@
+
+				<div id="sub_nav">
+          <% tag_count = @tags.keys.size - 1 %>
+					<% @tags.keys.sort.each_with_index do |tag,i| %>
+            <% current_tag_count = @tags[tag].size %>
+            <% weight = (Math.log(current_tag_count) - Math.log(@min_tag_count)) / (Math.log(@max_tag_count)-Math.log(@min_tag_count)) %>
+            <% font_size = (1.0 + ((5.0-1.0)*weight).round()).to_i %>
+            <a href="#<%= tag.gsub(/ /, '_') %>" class="cloud_tag cloud<%= font_size  %>"><%= tag %></a><%= ",&nbsp;" if i < tag_count %>
+					<% end %>
+				</div>
+
+				<% @tags.keys.sort.each do |tag| %>
+          <a name="<%= tag.gsub(/ /, '_') %>"></a>
+          <h2 class="tag_button" style="display:none;">
+            <button name="<%= tag.gsub(/ /, '_') %>" class="tag_header_button"><%= tag %></button>
+          </h2>
+
+					<div class="accordion_tag">
+
+            <% @packages.select{|p| p[:tags].include?(tag)}.each do |package| %>
+						<div>
+							<h3><a href="#<%= package[:name] %>"><%= package[:description] %></a></h3>
+							<div>
+								<p>
+									<code>module load <%= package[:name] %></code>
+								</p>
+								<% unless package[:url].nil? %>
+									<p><b>URL:</b> <a target="_new" href="<%= package[:url] %>"><%= package[:url] %></a></p>
+								<% end %>
+								<% unless package[:tags].empty? %>
+									<p><b>Tags:</b>
+									<% package[:tags].each do |tag| %>
+                    <button href="#<%= tag.gsub(/ /, '_') %>" class="tag_link"><%= tag %></button>
+									<% end %>
+									</p>
+								<% end %>
+                <pre>
+<%= package[:help_text] %>
+                </pre>
+							</div>
+						</div>
+            <% end %>
+
+					</div>
+				<% end %>
+
+<script>
+  $(function() {
+    $('.tag_header_button').button({ icons: { primary: "ui-icon-tag", secondary: "ui-icon-triangle-1-s" }});
+    $('.tag_link').button({ icons: { primary: "ui-icon-tag" }});
+    $('.top_return_button').button({ icons: { primary: "ui-icon-arrowthickstop-1-n" }});
+
+    $(".accordion_tag").accordion({
+      header: "h3",
+      active: false,
+      collapsible: true,
+      autoHeight: true,
+      icons: { 'header': 'ui-icon-plus', 'headerSelected': 'ui-icon-minus' }
+    });
+
+    var $tabs = $('#tabs').tabs();
+    $('.tag_link').click(function() {
+        $('.accordion_tag').each(function(index) { $(this).hide(); });
+        $('.tag_header_button').each(function(index) { $(this).hide(); });
+        $tabs.tabs('select', 0);
+        var this_button = $('button[name="' + $(this).attr('href').substring(1) + '"]')
+        this_button.parent().show();
+        this_button.parent().next().show('fast');
+        this_button.effect('highlight');
+    });
+
+    $('.cloud_tag').each(function(index) {
+      $(this).click(function() {
+        $('.accordion_tag').each(function(index) { $(this).hide(); });
+        $('.tag_header_button').each(function(index) { $(this).hide(); });
+        var this_button = $('button[name="' + $(this).attr('href').substring(1) + '"]')
+        this_button.parent().show();
+        this_button.parent().next().show('fast');
+        this_button.effect('highlight');
+      });
+    });
+
+    $('.tag_header_button').click(function() {
+      $(this).parent().next().toggle('fast');
+      return false;
+    }).parent().next().hide();
+  });
+</script>
+

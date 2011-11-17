@@ -1,0 +1,9 @@
+wp-content/plugins
+Gemfile.lock
+.bundle
+log/
+tmp/
+wp-content/themes/twentyeleven
+wp-content/themes/diffs
+wp-content/uploads
+dashboard
